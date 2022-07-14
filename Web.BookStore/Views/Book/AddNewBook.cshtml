@@ -1,0 +1,56 @@
+﻿@model BookModel
+
+@{
+    ViewData["Title"] = "AddNewBook";
+    Layout = "_Layout";
+}
+
+
+<div class="container">
+    <h1 class="display-4">AddNewBook</h1>
+    <form method="post" asp-action="AddNewBook" asp-controller="Book">
+        <div class="mb-3">
+            <label class="form-label" asp-for="Title"></label>
+            <input class="form-control" asp-for="Title" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="Author"></label>
+            <input class="form-control" asp-for="Author" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Description"></label>
+            <textarea class="form-control" asp-for="Description" ></textarea>
+          
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Category"></label>
+
+            <input class="form-control" asp-for="Category" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Language"></label>
+
+            <input class="form-control" asp-for="Language" />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="TotalPages"></label>
+
+            <input class="form-control" asp-for="TotalPages" />
+        </div>
+        <div class="mb-3">
+            <input type="button" class="btn btn-success" value="Add Book" />
+
+        </div>
+
+    </form>
+</div>
+
+
+
+
+

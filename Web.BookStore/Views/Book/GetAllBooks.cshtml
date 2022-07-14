@@ -1,16 +1,33 @@
 ﻿
 @{
-    Layout = null;
+    ViewData["Title"] = "All Books";
 }
 
-<!DOCTYPE html>
+@*@model IEnumerable<BookModel>*@
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>GetAllBooks</title>
-</head>
-<body>
-    <button>Click Me</button>
-</body>
-</html>
+@{ 
+   
+}
+
+
+<div class="container">
+    <h3 class="diplay-4">All Books</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var book in Model)
+        {
+            <div class="col">
+                <div class="card " style=" width:10rem;  ">
+                    <img src="~/images/books.png" class="card-img-top" style="width:5rem; height:70px;" alt="img" />
+                    <div class="card-body">
+                        <h5 class="card-title">@book.Title</h5>
+                        <p class="card-text">@book.Description </p>
+                        <a   asp-route="bookDetailsRoute" asp-route-id="@book.ID" class="btn btn-primary">View Details</a>
+                    </div>
+                    <small class="text-muted">Written By:@book.Author</small>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>

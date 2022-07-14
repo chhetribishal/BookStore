@@ -26,11 +26,12 @@ namespace Web.BookStore.Repository
         {
             return new List<BookModel>()
             {
-                new BookModel(){ID=1,Title="MVC",Author="Bishal"},
-                new BookModel(){ID=2,Title="C#",Author="HARI"},
-                new BookModel(){ID=3,Title="JAVA",Author="shal"},
-                new BookModel(){ID=4,Title="PHP",Author="RAM"},
-                new BookModel(){ID=5,Title="SQL",Author="Shyam"},
+                new BookModel(){ID=1,Title="MVC",Author="Bishal",Description ="This is Description for MVC",Category="happy",Language="English",TotalPages=345},
+                new BookModel(){ID=2,Title="C#",Author="HARI",Description ="This is Description for c#",Category="happy",Language="English",TotalPages=34},
+                new BookModel(){ID=3,Title="JAVA",Author="shal",Description ="This is Description for JAVA",Category="happy",Language="English",TotalPages=345},
+                new BookModel(){ID=3,Title="JAVA",Author="shal",Description ="This is Description for JAVA",Category="happy",Language="English",TotalPages=345},
+                new BookModel(){ID=4,Title="PHP",Author="RAM",Description ="This is Description for PHP",Category="happy",Language="English",TotalPages=345},
+                new BookModel(){ID=5,Title="SQL",Author="Shyam",Description ="This is Description for SQL",Category="happy",Language="English",TotalPages=345},
             };
         }
     }

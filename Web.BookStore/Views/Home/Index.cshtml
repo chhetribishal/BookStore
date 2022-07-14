@@ -1,24 +1,28 @@
 ﻿
-@{
-    Layout = null;
+@*@{ 
+//ViewData["Title"] = "Home";
+}*@
+
+@{ 
+    var book = ViewData["book"] as BookModel;
 }
 
-<!DOCTYPE html>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>Welcome to Bookstore @ViewBag.Title</h1>
+        <p class="lead text-muted">
+            
+            <h1>ID: @book.ID</h1>
+            <h2>Author:@book.Author </h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body class="container">
-    <h1 class="h1">Welcome to Book sTore</h1>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-</body>
-</html>
-
-<script>
-    $(document).ready(function () {
-        alert("hello jquery");
-    })
-</script>
+           
+            <br />
+           
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <p>
+            <a href="#" class="btn btn-primary my-2">Search books</a>
+        </p>
+    </div>
+</section>
