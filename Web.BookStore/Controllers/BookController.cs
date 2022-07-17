@@ -13,46 +13,57 @@ namespace Web.BookStore.Controllers
     {
         private readonly BookRepository _bookRepository = null;
 
-        public BookController()
+        public BookController(BookRepository bookRepository)
         {
-            _bookRepository = new BookRepository();
+            _bookRepository = bookRepository;
         }
 
-        public ActionResult GetAllBooks()
+        public async Task<ActionResult>GetAllBooks()
         {
-            var data = _bookRepository.GetAllBook();
+            var data = await _bookRepository.GetAllBook();
             return View(data);
         }
 
-        [Route("book-details/{id}",Name="bookDetailsRoute")]
-        public ActionResult GetBookByID(int id)
+        [Route("book-details/{id}", Name = "bookDetailsRoute")]
+        public async Task<ActionResult> GetBookByID(int id)
         {
 
             dynamic data = new ExpandoObject();
-            data.book = _bookRepository.GetBookByID(id);
+            data.book = await _bookRepository.GetBookByID(id);
             data.Name = "bishu";
 
             return View(data);
 
         }
 
-        public List<BookModel> SearchBooks(string bookName,string authorName)
-        {
-            return _bookRepository.SearchBook(bookName, authorName);
-        }
+        //public List<BookModel> SearchBooks(string bookName, string authorName)
+        //{
+        //    return _bookRepository.SearchBook(bookName, authorName);
+        //}
 
-        public ActionResult AddNewBook()
+        public  IActionResult AddNewBook(bool isSuccess=false,int bookId =0)
         {
-
+            ViewBag.IsSuccess = isSuccess ;
+            ViewBag.BookId = bookId;
             return View();
         }
 
 
         [HttpPost]
-        public ActionResult AddNewBook(BookModel book)
+        public async Task<IActionResult> AddNewBook(BookModel book)
         {
-           
+            if (ModelState.IsValid)
+            {
+                int id = await _bookRepository.AddNewBook(book);
+                if (id > 0)
+                {
+                    return RedirectToAction("AddNewBook", new { isSuccess = true, bookId = id });
+                }
 
+            }
+            //ViewBag.IsSuccess = false;
+            //ViewBag.BookId = 0;
+          
             return View();
         }
     }

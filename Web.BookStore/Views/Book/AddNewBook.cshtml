@@ -8,32 +8,50 @@
 
 <div class="container">
     <h1 class="display-4">AddNewBook</h1>
-    <form method="post" asp-action="AddNewBook" asp-controller="Book">
+    @if (ViewBag.IsSuccess==true)
+    {
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">Book Added Successfully!</h4>
+    <a asp-controller="Book" asp-action="GetBookByID" asp-route-id="@ViewBag.BookId">
+        Click here to view the Details
+    </a>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+    }
+    <form method="post" asp-controller="Book" asp-action="AddNewBook">
         <div class="mb-3">
             <label class="form-label" asp-for="Title"></label>
             <input class="form-control" asp-for="Title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label class="form-label" asp-for="Author"></label>
             <input class="form-control" asp-for="Author" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+
         </div>
 
         <div class="mb-3">
             <label class="form-label" asp-for="Description"></label>
-            <textarea class="form-control" asp-for="Description" ></textarea>
-          
+            <textarea class="form-control" asp-for="Description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+
         </div>
 
         <div class="mb-3">
             <label class="form-label" asp-for="Category"></label>
 
             <input class="form-control" asp-for="Category" />
+            <span asp-validation-for="Category" class="text-danger"></span>
+
         </div>
 
         <div class="mb-3">
             <label class="form-label" asp-for="Language"></label>
 
             <input class="form-control" asp-for="Language" />
+            <span asp-validation-for="Language" class="text-danger"></span>
+
         </div>
 
 
@@ -41,9 +59,11 @@
             <label class="form-label" asp-for="TotalPages"></label>
 
             <input class="form-control" asp-for="TotalPages" />
+            <span asp-validation-for="TotalPages" class="text-danger"></span>
+
         </div>
         <div class="mb-3">
-            <input type="button" class="btn btn-success" value="Add Book" />
+            <input type="submit" class="btn btn-success" value="Add Book" />
 
         </div>
 

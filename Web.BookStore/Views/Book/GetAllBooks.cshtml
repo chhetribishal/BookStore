@@ -5,29 +5,35 @@
 
 @*@model IEnumerable<BookModel>*@
 
-@{ 
-   
+@{
+
 }
 
 
-<div class="container">
-    <h3 class="diplay-4">All Books</h3>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach (var book in Model)
-        {
-            <div class="col">
-                <div class="card " style=" width:10rem;  ">
-                    <img src="~/images/books.png" class="card-img-top" style="width:5rem; height:70px;" alt="img" />
-                    <div class="card-body">
-                        <h5 class="card-title">@book.Title</h5>
-                        <p class="card-text">@book.Description </p>
-                        <a   asp-route="bookDetailsRoute" asp-route-id="@book.ID" class="btn btn-primary">View Details</a>
+<div class="container" >
+        
+       <div class="py-5 bg-light" >
+        <h3 class="diplay-4">All Books</h3>
+        <div class="row">
+            @foreach (var book in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="~/images/books.png" class="bd-placeholder-img card-img-top" width="100" height="150" alt="img" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"  />
+
+                        <div class="card-body">
+                            <h5 class="card-title">@book.Title</h5>
+                            <p class="card-text">@book.Description </p>
+                            <a asp-route="bookDetailsRoute" asp-route-id="@book.ID" class="btn btn-primary">View Details</a>
+                        </div>
+                        <small class="text-muted">Written By:@book.Author</small>
                     </div>
-                    <small class="text-muted">Written By:@book.Author</small>
                 </div>
-            </div>
-        }
+            }
+
+        </div>
+    </div>
 
     </div>
 
-</div>
+
