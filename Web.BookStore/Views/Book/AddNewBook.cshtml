@@ -7,7 +7,7 @@
 
 
 <div class="container">
-    <h1 class="display-4">AddNewBook</h1>
+    <h3 class="display-4">AddNewBook</h3>
     @if (ViewBag.IsSuccess==true)
     {
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -18,56 +18,62 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
     }
-    <form method="post" asp-controller="Book" asp-action="AddNewBook">
-        <div class="mb-3">
-            <label class="form-label" asp-for="Title"></label>
-            <input class="form-control" asp-for="Title" />
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" asp-for="Author"></label>
-            <input class="form-control" asp-for="Author" />
-            <span asp-validation-for="Author" class="text-danger"></span>
+<form method="post" asp-controller="Book" asp-action="AddNewBook">
+    <div class="mb-2">
+        <label class="form-label" asp-for="MyField"></label>
+        <input class="form-control" asp-for="MyField" />
+        <span asp-validation-for="MyField" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label class="form-label" asp-for="Title"></label>
+        <input class="form-control" asp-for="Title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-2">
+        <label class="form-label" asp-for="Author"></label>
+        <input class="form-control" asp-for="Author" />
+        <span asp-validation-for="Author" class="text-danger"></span>
 
-        </div>
+    </div>
 
-        <div class="mb-3">
-            <label class="form-label" asp-for="Description"></label>
-            <textarea class="form-control" asp-for="Description"></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
+    <div class="mb-2">
+        <label class="form-label" asp-for="Description"></label>
+        <textarea class="form-control" asp-for="Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
 
-        </div>
+    </div>
 
-        <div class="mb-3">
-            <label class="form-label" asp-for="Category"></label>
+    <div class="mb-2">
+        <label class="form-label" asp-for="Category"></label>
 
-            <input class="form-control" asp-for="Category" />
-            <span asp-validation-for="Category" class="text-danger"></span>
+        <input class="form-control" asp-for="Category" />
+        <span asp-validation-for="Category" class="text-danger"></span>
 
-        </div>
+    </div>
 
-        <div class="mb-3">
-            <label class="form-label" asp-for="Language"></label>
+    <div class="mb-2">
+        <label class="form-label" asp-for="Language"></label>
+        <select asp-for="Language" class="form-control" asp-items="@ViewBag.Language">
+            <option>Please Choose your Language</option>
+        </select>
+        <span asp-validation-for="Language" class="text-danger"></span>
 
-            <input class="form-control" asp-for="Language" />
-            <span asp-validation-for="Language" class="text-danger"></span>
-
-        </div>
+    </div>
 
 
-        <div class="mb-3">
-            <label class="form-label" asp-for="TotalPages"></label>
+    <div class="mb-2">
+        <label class="form-label" asp-for="TotalPages"></label>
 
-            <input class="form-control" asp-for="TotalPages" />
-            <span asp-validation-for="TotalPages" class="text-danger"></span>
+        <input class="form-control" asp-for="TotalPages" />
+        <span asp-validation-for="TotalPages" class="text-danger"></span>
 
-        </div>
-        <div class="mb-3">
-            <input type="submit" class="btn btn-success" value="Add Book" />
+    </div>
+    <div class="mb-2">
+        <input type="submit" class="btn btn-success" value="Add Book" />
 
-        </div>
+    </div>
 
-    </form>
+</form>
 </div>
 
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -41,8 +42,15 @@ namespace Web.BookStore.Controllers
         //    return _bookRepository.SearchBook(bookName, authorName);
         //}
 
-        public  IActionResult AddNewBook(bool isSuccess=false,int bookId =0)
+        public IActionResult AddNewBook(bool isSuccess = false, int bookId = 0)
         {
+
+
+            ViewBag.Language = new SelectList(new List<string>()
+                {
+                "English","Hindi","Nepali"
+                });
+
             ViewBag.IsSuccess = isSuccess ;
             ViewBag.BookId = bookId;
             return View();
@@ -61,9 +69,14 @@ namespace Web.BookStore.Controllers
                 }
 
             }
+
+            ViewBag.Language = new SelectList(new List<string>()
+                {
+                "English","Hindi","Nepali"
+                });
             //ViewBag.IsSuccess = false;
             //ViewBag.BookId = 0;
-          
+
             return View();
         }
     }
