@@ -52,11 +52,11 @@
     </div>
 
     <div class="mb-2">
-        <label class="form-label" asp-for="Language"></label>
-        <select asp-for="Language" class="form-control" asp-items="@ViewBag.Language">
-            <option>Please Choose your Language</option>
+        <label class="form-label" asp-for="MultiLanguage"></label>
+        <select asp-for="MultiLanguage" class="form-control" asp-items="ViewBag.Language" multiple>
+            <option value="">Please Choose your Language</option>
         </select>
-        <span asp-validation-for="Language" class="text-danger"></span>
+        <span asp-validation-for="MultiLanguage" class="text-danger"></span>
 
     </div>
 

@@ -19,7 +19,7 @@ namespace Web.BookStore.Controllers
             _bookRepository = bookRepository;
         }
 
-        public async Task<ActionResult>GetAllBooks()
+        public async Task<ActionResult> GetAllBooks()
         {
             var data = await _bookRepository.GetAllBook();
             return View(data);
@@ -44,16 +44,27 @@ namespace Web.BookStore.Controllers
 
         public IActionResult AddNewBook(bool isSuccess = false, int bookId = 0)
         {
+            var model = new BookModel()
+            {
+                //Language = "2"
+        };
 
+            //var group1 = new SelectListGroup() { Name = "Group1" };
+            //var group2 = new SelectListGroup() { Name = "Group2" ,Disabled = true};
+            //var group3 = new SelectListGroup() { Name = "Group3" };
 
-            ViewBag.Language = new SelectList(new List<string>()
-                {
-                "English","Hindi","Nepali"
-                });
+            ViewBag.Language = new List<SelectListItem>()
+            {
+                new SelectListItem(){ Text = "Nepali", Value="1"},
+                new SelectListItem(){Text = "English",Value="2"} ,
+                new SelectListItem(){Text = "French", Value = "3"  },
+                new SelectListItem(){Text = "Dutch", Value ="4" },
 
-            ViewBag.IsSuccess = isSuccess ;
+            };
+
+            ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId;
-            return View();
+            return View(model);
         }
 
 
@@ -70,14 +81,32 @@ namespace Web.BookStore.Controllers
 
             }
 
-            ViewBag.Language = new SelectList(new List<string>()
-                {
-                "English","Hindi","Nepali"
-                });
+            //var group1 = new SelectListGroup() { Name = "Group1" };
+            //var group2 = new SelectListGroup() { Name = "Group2", Disabled = true };
+            //var group3 = new SelectListGroup() { Name = "Group3" };
+
+            ViewBag.Language = new List<SelectListItem>()
+            {
+                new SelectListItem(){ Text = "Nepali", Value="1" },
+                new SelectListItem(){Text = "English",Value="2"} ,
+                new SelectListItem(){Text = "French", Value = "3" },
+                new SelectListItem(){Text = "Dutch", Value ="4" },
+
+            };
+
             //ViewBag.IsSuccess = false;
             //ViewBag.BookId = 0;
 
             return View();
         }
+
+        private List<Language> GetLanguage() {
+            return new List<Language>() {
+            new Language() { Id = 1,Text = "Nepali"},
+            new Language() { Id =2,Text="English"},
+            new Language() { Id = 3, Text = "Dutch" }
+        };
+            }
+
     }
 }
